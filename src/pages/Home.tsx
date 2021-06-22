@@ -1,12 +1,13 @@
 import { Button } from '../components/Button';
+
 import { useHistory } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 
 import IllustrationImg from '../assets/images/illustration.svg';
 import logoImg from '../assets/images/logo.svg';
 import googleImg from '../assets/images/google-icon.svg';
 
 import '../styles/auth.scss';
-import { useAuth } from '../contexts/AuthContext';
 
 export function Home(){
 
