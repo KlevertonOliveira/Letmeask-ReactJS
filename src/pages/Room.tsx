@@ -7,6 +7,7 @@ import { Button } from '../components/Button';
 import { Question } from '../components/Question';
 import { RoomCode } from '../components/RoomCode';
 import { useAuth } from '../contexts/AuthContext';
+import { useTheme } from '../contexts/ThemeContext';
 import { useRoom } from '../hooks/useRoom';
 
 import { database } from '../services/firebase';
@@ -25,6 +26,7 @@ export function Room(){
   const {questions, title} = useRoom(roomId);
 
   const {user} = useAuth();
+  const {theme, toggleTheme} = useTheme();
 
   const [newQuestion, setNewQuestion] = useState('');
 
@@ -66,18 +68,39 @@ export function Room(){
   }
 
   return(
-    <div id='page-room'>
+    <div id='page-room' className={theme}>
       <header>
         <div className='content'>
           <img src={logoImg} alt='letmeask' />
-          <RoomCode code={roomId}/>
+          <div className='header-buttons'>
+            <RoomCode code={roomId}/>
+            <button onClick={toggleTheme} className={`toggle-theme ${theme}`}>
+              {theme==='light' ? 
+                (<div>
+                  
+                  <svg xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                  </svg>
+                </div>
+                  ) 
+                : 
+                (<div>
+                  
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                  </svg>
+                </div>
+                  ) 
+                }
+            </button>
+          </div>
         </div>
       </header>
 
       <main>
         
         <div className='room-title'>
-          <h1>Sala {title}</h1>
+          <h1 className={theme}>Sala {title}</h1>
           {questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
         </div>
 
@@ -93,7 +116,7 @@ export function Room(){
               user ? 
                 (<div className='user-info'>
                   <img src={user.avatar} alt={user.name} />
-                  <span>{user.name}</span>
+                  <span className={theme}>{user.name}</span>
                 </div>)
 
                 :

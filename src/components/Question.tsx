@@ -3,6 +3,7 @@ import { ReactNode } from 'react';
 import cn from 'classnames';
 
 import '../styles/question.scss';
+import { useTheme } from '../contexts/ThemeContext';
 
 type QuestionProps = {
   content: string;
@@ -22,12 +23,16 @@ export function Question(
    isAnswered = false, 
    isHighlighted = false,
   }: QuestionProps){
+
+  const { theme } = useTheme();
+
   return(
     <div className={
       cn(
         'question',
         {answered: isAnswered},
-        {highlighted: isHighlighted && !isAnswered}
+        {highlighted: isHighlighted && !isAnswered},
+        theme
       )
     }>
       <p>{content}</p>

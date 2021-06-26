@@ -9,6 +9,11 @@
 
   display: flex;
 
+  &.dark{
+    background: #333;
+    color: #fff;
+  }
+
   div{
     background: #835afd;
     padding: 0 12px;
@@ -22,7 +27,7 @@
     align-self: center;
     flex: 1;
     padding: 0 16px 0 12px;
-    width: 230px;
+    width: max-content;
     font-size: 14px;
     font-weight: 500;
   }

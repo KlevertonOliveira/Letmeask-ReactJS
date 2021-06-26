@@ -3,6 +3,10 @@
   align-items: stretch;
   height: 100vh;
 
+  &.dark{
+    background: #333;
+  }
+
   aside{
     flex: 7;
 
@@ -51,6 +55,32 @@
     align-items: stretch;
     text-align: center;
 
+    .toggle-theme{
+      background: transparent;
+      position: absolute;
+      top: 0;
+      right: 0;
+      border: 0;
+      outline: none;
+      font-weight: 500;
+      padding: 8px 16px;
+      cursor: pointer;
+
+      
+      &.dark{
+        color: #fff;
+      }
+      
+      >div{
+        display: flex;
+        align-items: center;
+
+        >svg{
+          height: 40px;
+        }
+      }
+    }
+
     >img{
       align-self: center;
     }
@@ -59,6 +89,10 @@
       font-size: 24px;
       margin: 64px 0 24px;
       font-family: 'Poppins', sans-serif;
+
+      &.dark{
+        color: #fff;
+      }
     }
 
     form{

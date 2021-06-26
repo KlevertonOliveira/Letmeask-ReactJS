@@ -1,5 +1,10 @@
 #page-room{
-  margin-bottom: 32px;
+  min-height: 100vh;
+
+  &.dark{
+    background: #333;
+    color: #fff;
+  }
   
   header{
     padding: 24px;
@@ -11,6 +16,29 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+
+
+      .toggle-theme{
+      background: transparent;
+      border: 0;
+      outline: none;
+      font-weight: 500;
+      cursor: pointer;
+      margin-left: 16px;
+      
+      &.dark{
+        color: #fff;
+      }
+      
+      >div{
+        display: flex;
+        align-items: center;
+
+        >svg{
+          height: 35px;
+        }
+      }
+    }
 
       >img{
         max-height: 45px;
@@ -40,6 +68,10 @@
         font-family: 'Poppins', sans-serif;
         font-size: 24px;
         color: #29292e;
+
+        &.dark{
+          color: #fff;
+        }
       }
 
       span{
@@ -86,6 +118,10 @@
             color: #29292e;
             font-size: 14px;
             font-weight: 500;
+
+            &.dark{
+              color: #fff;
+            }
           }
         }
 
